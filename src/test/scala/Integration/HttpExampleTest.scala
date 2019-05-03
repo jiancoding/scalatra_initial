@@ -1,14 +1,23 @@
 package Integration
 
+import com.chapter.one.tutorial.model.City
+import org.json4s.{DefaultFormats, Formats}
+import org.json4s._
+import org.json4s.jackson.JsonMethods._
+
 class HttpExampleTest extends TestBase {
+
+  //reference json library link: https://index.scala-lang.org/json4s/json4s/json4s-jackson/3.5.2?target=_2.12
+  protected implicit lazy val jsonFormats: Formats = DefaultFormats
 
   behavior of "HttpExample"
 
   it should "return 200 ok when hitting city endpoint" in {
-    val x = 1
    get("/city") {
      assert(status == 200)
-     assert(body == "you got it")
+
+     val result = parse(body).extract[City]
+     assert(result.id == 1)
    }
   }
 
