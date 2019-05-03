@@ -1,6 +1,6 @@
 package Integration
 
-import com.chapter.one.tutorial.HttpExample
+import com.chapter.one.tutorial.Controller.CityController
 import org.scalatest.BeforeAndAfterEach
 import org.scalatra.test.scalatest.ScalatraFlatSpec
 
@@ -10,7 +10,7 @@ trait TestBase
 
     override def beforeAll() {
      super.beforeAll()
-     addServlet(classOf[HttpExample], path="/*")
+     addServlet(classOf[CityController], path="/*")
     }
 
 }
